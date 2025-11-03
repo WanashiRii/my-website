@@ -12,9 +12,23 @@ fetch('articles.json')
     console.error('記事データの読み込みに失敗しました:', error);
   });
 
+// ページ要素一覧
+const pages = document.querySelectorAll('.page');
+
+// ===== ヘルパー =====
+function stripTags(html) {
+  return html ? String(html).replace(/<[^>]*>/g, '') : '';
+}
+function getSummary(article) {
+  if (article.summary) return article.summary;
+  const txt = stripTags(article.content || '');
+  return txt.length > 120 ? txt.slice(0, 117) + '...' : txt;
+}
+
 // ===== 記事一覧を生成 =====
 function renderArticleList() {
   const listContainer = document.querySelector('#articles .content');
+  if (!listContainer) return;
   listContainer.innerHTML = '';
 
   articlesData.forEach(article => {
@@ -22,37 +36,53 @@ function renderArticleList() {
     el.setAttribute('data-article', article.id);
     el.innerHTML = `
       <h3>${article.title}</h3>
-      <p>${article.summary}</p>
+      <p>${getSummary(article)}</p>
     `;
     listContainer.appendChild(el);
   });
 
-  // クリックイベント設定
-  document.querySelectorAll('#articles article').forEach(article => {
-    article.addEventListener('click', () => {
-      const id = article.getAttribute('data-article');
-      location.hash = `#article-${id}`; // ← ハッシュ更新
+  // クリックイベント
+  document.querySelectorAll('#articles article').forEach(articleEl => {
+    articleEl.addEventListener('click', () => {
+      const id = articleEl.getAttribute('data-article');
+      history.pushState({ articleId: id }, '', `#article-${id}`);
+      handleHashChange();
     });
   });
 }
 
-// ===== 記事ページを表示 =====
+// ===== 個別記事ページ表示 =====
 function showArticle(id) {
-  const data = articlesData.find(a => a.id == id);
+  const data = articlesData.find(a => String(a.id) === String(id));
   const container = document.getElementById('article-content');
+  if (!data) {
+    history.replaceState({}, '', '#articles');
+    showPage('articles');
+    return;
+  }
+
+  // contentが配列の場合は改行で結合
+  let contentHtml = '';
+  if (Array.isArray(data.content)) {
+    contentHtml = data.content.join('<br>');
+  } else {
+    contentHtml = data.content || '';
+  }
+
   container.innerHTML = `
     <h2>${data.title}</h2>
-    ${data.content}
+    ${contentHtml}
     ${data.audio ? `<audio controls src="${data.audio}"></audio>` : ''}
   `;
   showPage('article-page');
 }
 
+
 // ===== ページ切り替え =====
-const pages = document.querySelectorAll('.page');
 function showPage(pageId) {
   pages.forEach(p => p.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
+  const el = document.getElementById(pageId);
+  if (el) el.classList.add('active');
 }
 
 // ===== ナビゲーション =====
@@ -60,17 +90,24 @@ document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const page = link.dataset.page;
-    location.hash = `#${page}`; // ← ハッシュで切り替え
+    if (!page) return;
+    history.pushState({ page }, '', `#${page}`);
+    handleHashChange();
   });
 });
 
 // ===== 戻るボタン =====
-document.getElementById('back-to-list').addEventListener('click', () => {
-  location.hash = '#articles'; // ← ハッシュを使って戻る
-});
+const backBtn = document.getElementById('back-to-list');
+if (backBtn) {
+  backBtn.addEventListener('click', () => {
+    history.pushState({ page: 'articles' }, '', '#articles');
+    handleHashChange();
+  });
+}
 
-// ===== ハッシュ監視 =====
+// ===== ハッシュ & 履歴監視 =====
 window.addEventListener('hashchange', handleHashChange);
+window.addEventListener('popstate', handleHashChange);
 
 function handleHashChange() {
   const hash = location.hash;
@@ -82,9 +119,15 @@ function handleHashChange() {
   } else if (hash.startsWith('#article-')) {
     const id = hash.replace('#article-', '');
     showArticle(id);
+  } else if (hash.startsWith('#')) {
+    const id = hash.replace('#', '');
+    const target = document.getElementById(id);
+    if (target) showPage(id);
+    else showPage('home');
   } else {
-    showPage('home'); // 不明なハッシュ → ホームへ
+    showPage('home');
   }
-  document.body.style.visibility = 'visible'; // ハッシュ処理後に表示
 
+  // ハッシュ処理後に表示
+  document.body.style.visibility = 'visible';
 }

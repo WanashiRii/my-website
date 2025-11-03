@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>和梨Rii[Wanashi Rii]のサイト</title>
+  <title>和梨Rii's_HP</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
-    <h1>TEST PAGE</h1>
+    <h1>和梨Rii Infomations</h1>
     <nav>
       <ul>
-        <li><a data-page="home">ホーム</a></li>
-        <li><a data-page="articles">記事一覧</a></li>
-        <li><a data-page="contact">お問い合わせ</a></li>
+        <li><a href="#home" data-page="home">ホーム</a></li>
+        <li><a href="#articles" data-page="articles">記事一覧</a></li>
+        <li><a href="#contact" data-page="contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </header>
+
 
   <main>
     <!-- ホーム -->
     <section id="home" class="page active">
       <div class="hero">
         <h2>ようこそ！</h2>
-        <p>いろいろ準備中です<br>ここには特に何もありません_</p>
+        <p>
+          いろいろ準備中です<br>
+          <br>
+          ここには特に何もありませんが、<br>
+          代わりにリンクとゲームを置いてます。
+        </p>
       </div>
-      <p>このサイトは、自己紹介やブログ、ファイル共有などに使う予定です。</p>
+      <p>
+        このサイトは、自己紹介やブログ、ファイル共有などに使う予定です。<br>
+        <br>
+      <h3>和梨RiiのSNSやチャンネルはこちら</h3>
+      <a href="https://x.com/WanashiRii">・Xアカウント</a><br>
+      <a href="https://www.youtube.com/@和梨_Rii">・YouTubeチャンネル</a><br>
+      <a href="https://www.pixiv.net/users/84639832">・pixivアカウント</a><br>
+      <a href="https://drive.google.com/drive/folders/1bClhbxunL17uXgz9OwPP9GQmxWjh-DiO?usp=drive_link"
+        target="_blank">・自作シューティングゲーム(注意:低クオ)</a><br>
+      <br>
+      自作シューティングゲームについては、x64WindowsPC専用です。<br>
+      リンク先は、Googleドライブのフォルダです。興味あればダウンロードして遊んでください。<br>
+      Unity2Dで作っています。グラボは要りません。<br>
+      Intel i5（10世代）環境で動作確認済みです。そこまで要求スペックは高くないです。<br>
+      もし不具合等があれば、XのDMまでご連絡ください！<br>
+      </p>
     </section>
 
     <!-- 記事一覧 -->
@@ -35,14 +58,6 @@
         <article data-article="1">
           <h3>記事タイトル1</h3>
           <p>これはサンプル記事1の概要です。</p>
-        </article>
-        <article data-article="2">
-          <h3>記事タイトル2</h3>
-          <p>これはサンプル記事2の概要です。</p>
-        </article>
-        <article data-article="3">
-          <h3>記事タイトル3</h3>
-          <p>これはサンプル記事3の概要です。</p>
         </article>
       </div>
     </section>
@@ -67,7 +82,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 My Awesome Page. All rights reserved.</p>
+    <p>&copy; 2025 WanashiRii. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
@@ -83,7 +98,12 @@
       padding: 2rem;
       text-align: center;
     }
-    header, main, footer { display: none; }
+
+    header,
+    main,
+    footer {
+      display: none;
+    }
   </style>
   <div>
     <h1>JavaScriptが無効になっています</h1>
