@@ -1,119 +1,147 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>和梨Rii's_HP</title>
+  <!-- アイコン用フォント (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <h1>和梨Rii Infomations</h1>
-    <nav>
-      <ul>
-        <li><a href="#home" data-page="home">ホーム</a></li>
-        <li><a href="#articles" data-page="articles">記事一覧</a></li>
-        <li><a href="#contact" data-page="contact">お問い合わせ</a></li>
-      </ul>
-    </nav>
+  <!-- 固定ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <h1 class="site-title"><a href="#profile">Rii's Profile </a></h1>
+        <!-- てっぺんのSNSアイコン横並び -->
+        <div class="header-socials">
+          <a href="https://x.com/Wanashi74juice" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.youtube.com/@和梨_Rii" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.pixiv.net/users/84639832" target="_blank" title="pixiv"><i class="fa-solid fa-palette"></i></a>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="#profile">HOME</a></li>
+          <li><a href="#articles">LOG</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
+  <main class="main-content">
 
-  <main>
-    <!-- ホーム -->
-    <section id="home" class="page active">
-      <div class="hero">
-        <h2>ようこそ！</h2>
-        <p>
-          いろいろ準備中です<br>
-          <br>
-          ここには特に何もありませんが、<br>
-          代わりにリンクとゲームを置いてます。
-        </p>
+    <!-- HOME PLACE -->
+    <section id="profile" class="page active">
+
+      <!-- バナー画像 -->
+      <div class="banner"></div>
+
+      <h2>ようこそ</h2>
+      <div class="profile-intro">
+        <p>Riiのプロフィールです。</p>
+        <p>PC使って何かするのが趣味。</p>
       </div>
-      <p>
-        このサイトは、自己紹介やブログ、ファイル共有などに使う予定です。<br>
-        <br>
-      <h3>和梨RiiのSNSやチャンネルはこちら</h3>
-      <a href="https://x.com/WanashiRii">・Xアカウント</a><br>
-      <a href="https://www.youtube.com/@和梨_Rii">・YouTubeチャンネル</a><br>
-      <a href="https://www.pixiv.net/users/84639832">・pixivアカウント</a><br>
-      <a href="https://drive.google.com/drive/folders/1bClhbxunL17uXgz9OwPP9GQmxWjh-DiO?usp=drive_link"
-        target="_blank">・自作シューティングゲーム(注意:低クオ)</a><br>
-      <br>
-      自作シューティングゲームについては、x64WindowsPC専用です。<br>
-      リンク先は、Googleドライブのフォルダです。興味あればダウンロードして遊んでください。<br>
-      Unity2Dで作っています。グラボは要りません。<br>
-      Intel i5（10世代）環境で動作確認済みです。そこまで要求スペックは高くないです。<br>
-      もし不具合等があれば、XのDMまでご連絡ください！<br>
-      </p>
+      <h2>Links</h2>
+      <div class="link-list">
+        <!-- X (旧Twitter) -->
+        <a href="https://x.com/Wanashi74juice" target="_blank" class="link-card">
+          <!-- アカウント画像（画像があれば src にパスを指定、なければiタグのフォールバック） -->
+          <div class="account-avatar">
+            <i class="fa-brands fa-x-twitter service-icon"></i>
+            <!-- 画像を置く場合は以下を有効化 (例) -->
+            <!-- <img src="images/x-avatar.png" alt="X Icon"> -->
+          </div>
+          <div class="card-info">
+            <div class="card-header-line">
+              <span class="site-name">X/Twitter</span>
+              <span class="account-id">@Wanashi74juice</span>
+            </div>
+            <p class="account-bio">イラスト投稿メイン(自発少なめ)</p>
+          </div>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@和梨_Rii" target="_blank" class="link-card">
+          <div class="account-avatar youtube">
+            <i class="fa-brands fa-youtube service-icon"></i>
+            <!-- <img src="images/yt-avatar.png" alt="YouTube Icon"> -->
+          </div>
+          <div class="card-info">
+            <div class="card-header-line">
+              <span class="site-name">YouTube</span>
+              <span class="account-id">@和梨_Rii</span>
+            </div>
+            <p class="account-bio">主にゆっくり茶番劇などを投稿(さぼり)。</p>
+          </div>
+        </a>
+
+        <!-- pixiv -->
+        <a href="https://www.pixiv.net/users/84639832" target="_blank" class="link-card">
+          <div class="account-avatar pixiv">
+            <i class="fa-solid fa-palette service-icon"></i>
+            <!-- <img src="images/pixiv-avatar.png" alt="pixiv Icon"> -->
+          </div>
+          <div class="card-info">
+            <div class="card-header-line">
+              <span class="site-name">pixiv</span>
+              <span class="account-id">id: 84639832</span>
+            </div>
+            <p class="account-bio">イラスト投稿(さぼり)。</p>
+          </div>
+        </a>
+
+        <!-- 自作ゲーム -->
+        <div class="link-card featured">
+          <div class="account-avatar game">
+            <i class="fa-solid fa-gamepad service-icon"></i>
+          </div>
+          <div class="card-info">
+            <div class="card-header-line">
+              <span class="site-name">自作シューティングゲーム</span>
+              <span class="account-id">PC専用 (Win10以降)</span>
+            </div>
+            <p class="account-bio">Unityで作成 / Win10以降搭載PCならおそらく動作できる</p>
+            <a href="https://drive.google.com/drive/folders/1bClhbxunL17uXgz9OwPP9GQmxWjh-DiO?usp=drive_link" target="_blank" class="btn">Google DriveからDL</a>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- 記事一覧 -->
     <section id="articles" class="page">
-      <h2>最新の記事</h2>
-      <div class="content">
-        <article data-article="1">
-          <h3>記事タイトル1</h3>
-          <p>これはサンプル記事1の概要です。</p>
-        </article>
+      <h2>記事一覧</h2>
+      <div class="article-list-container">
+        <!-- JSでarticles.jsonから生成 -->
       </div>
     </section>
 
-    <!-- 個別記事ページ -->
-    <section id="article-page" class="page">
-      <button id="back-to-list">← 記事一覧に戻る</button>
-      <div id="article-content"></div>
+    <!-- 個別記事詳細 -->
+    <section id="article-detail" class="page">
+      <button id="back-to-articles" class="btn btn-secondary">← 記事一覧に戻る</button>
+      <div id="article-content" class="article-body"></div>
     </section>
 
-    <!-- お問い合わせ -->
+    <!-- Contact (Gmailのシンプルな案内) -->
     <section id="contact" class="page">
-      <h2>お問い合わせ</h2>
-      <p>ご意見・ご感想などがありましたら、お気軽にどうぞ！</p>
-      <form>
-        <label>お名前：<br><input type="text" placeholder="ディスプレイネーム"></label><br>
-        <label>メール：<br><input type="email" placeholder="example@mail.com"></label><br>
-        <label>内容：<br><textarea rows="4" placeholder="ここに入力..."></textarea></label><br>
-        <button type="button" onclick="alert('現時点において、送信機能は利用できません')">送信</button>
-      </form>
-    </section>
+  <h2>Contact</h2>
+  <div class="contact-box">
+    <p>連絡は、X（旧Twitter）のDMにて</p>
+    <a href="https://x.com/Wanashi74juice" target="_blank" class="btn">
+      <i class="fa-brands fa-x-twitter"></i> XのDMへ
+    </a>
+  </div>
+</section>
   </main>
 
   <footer>
-    <p>&copy; 2025 WanashiRii. All rights reserved.</p>
+    <p>&copy; 2026 WanashiRii. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
-
-<noscript>
-  <style>
-    body {
-      visibility: visible !important;
-      background: #fff;
-      color: #333;
-      font-family: sans-serif;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    header,
-    main,
-    footer {
-      display: none;
-    }
-  </style>
-  <div>
-    <h1>JavaScriptが無効になっています</h1>
-    <p>
-      このページを正しく表示するには、ブラウザの設定で
-      <strong>JavaScriptを有効にしてください。</strong>
-    </p>
-    <p>（機能がご利用になれません）</p>
-  </div>
-</noscript>
-
-
 </html>
